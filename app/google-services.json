@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "980841101419",
+    "project_id": "keine-armut",
+    "storage_bucket": "keine-armut.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:980841101419:android:bfef3f773790d737a6d92e",
+        "android_client_info": {
+          "package_name": "com.solution_challenge.keinearmut"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLBmM7gfcFqVrmwqCICvVLRxjoXrGiAak"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
