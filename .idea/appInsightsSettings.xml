@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.solution_challenge.keinearmut" />
+                  <option name="mobileSdkAppId" value="1:980841101419:android:bfef3f773790d737a6d92e" />
+                  <option name="projectId" value="keine-armut" />
+                  <option name="projectNumber" value="980841101419" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
