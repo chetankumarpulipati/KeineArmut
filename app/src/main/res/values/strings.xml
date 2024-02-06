@@ -2,7 +2,8 @@
     <string name="app_name">Keine Armut</string>
     <string name="full_name">Full Name</string>
     <string name="email_id">Email Id</string>
-    <string name="phone_no">Phone</string>
+    <string name="phone_no">Mobile</string>
     <string name="password">Password</string>
-    <string name=""></string>
+    <string name="sign_up">Sign up</string>
+    <string name="registration">Registration</string>
 </resources>
