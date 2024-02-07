@@ -12,7 +12,20 @@
           "package_name": "com.solution_challenge.keinearmut"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "980841101419-56dkc2e5iabc07to459kn11ldp9uq6ra.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.solution_challenge.keinearmut",
+            "certificate_hash": "be62851f2898ad977d8e4908e84cbb872d30e241"
+          }
+        },
+        {
+          "client_id": "980841101419-mus4beag1ququg6mo496j1u0ts62oleb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCLBmM7gfcFqVrmwqCICvVLRxjoXrGiAak"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "980841101419-mus4beag1ququg6mo496j1u0ts62oleb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
