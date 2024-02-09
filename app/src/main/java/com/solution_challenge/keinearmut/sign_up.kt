@@ -2,12 +2,16 @@ package com.solution_challenge.keinearmut
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 
-//import kotlinx.android.synthetic.main.activity_main.*
+class sign_up : AppCompatActivity() {
 
-class sign_up: AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.sign_up)
+
     }
 }

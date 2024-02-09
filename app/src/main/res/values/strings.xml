@@ -13,4 +13,7 @@
     <string name="image_content_descritpion">Google Sign In</string>
     <string name="default_web_client_id">980841101419-mus4beag1ququg6mo496j1u0ts62oleb.apps.googleusercontent.com</string>
     <string name="dashboard">Dashboard</string>
+    <string name="state">Successfully Signed in</string>
+    <string name="google_sign_in">Sign With Google</string>
+    <string name="have_an_account">Already have an account?</string>
 </resources>
