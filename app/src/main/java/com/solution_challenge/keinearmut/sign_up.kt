@@ -8,7 +8,6 @@ import com.google.firebase.auth.FirebaseAuth
 
 class sign_up : AppCompatActivity() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.sign_up)

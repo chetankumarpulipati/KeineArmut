@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">Keine Armut</string>
     <string name="full_name">Full Name</string>
-    <string name="email_id">Email Id</string>
     <string name="phone_no">Mobile</string>
     <string name="password">Password</string>
     <string name="sign_up">Sign up</string>
     <string name="registration">Registration</string>
     <string name="login">Login</string>
     <string name="user_name">username</string>
+    <string name="email_id">email</string>
     <string name="login_button">Login</string>
     <string name="or">or</string>
     <string name="image_content_descritpion">Google Sign In</string>
@@ -16,4 +16,19 @@
     <string name="state">Successfully Signed in</string>
     <string name="google_sign_in">Sign With Google</string>
     <string name="have_an_account">Already have an account?</string>
+    <string name="welcome_message">Welcome Back!!</string>
+    <string name="display_username">%1$s</string>
+    <string name="home">Home</string>
+    <string name="email">%1$s</string>
+    <string name="uid">%1$s</string>
+    <string name="message">Message</string>
+    <string name="sync">Sync</string>
+    <string name="trash">Trash</string>
+    <string name="settings">Settings</string>
+    <string name="profile">Profile</string>
+    <string name="communicate">Communicate</string>
+    <string name="feedback">Feedback</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="share">Share</string>
 </resources>
