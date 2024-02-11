@@ -61,4 +61,12 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
             super.onBackPressed()
         }
     }
+//    override fun onPause() {
+//        super.onPause()
+//        val sharedPreferences = getSharedPreferences("app_state", MODE_PRIVATE)
+//        val editor = sharedPreferences.edit()
+//        editor.putBoolean("isDashboardOpen", true)
+//        editor.apply()
+//    }
+
 }

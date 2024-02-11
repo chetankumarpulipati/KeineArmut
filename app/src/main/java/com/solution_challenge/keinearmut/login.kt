@@ -15,6 +15,8 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import android.content.Context
+import android.widget.EditText
+import android.widget.ProgressBar
 import android.widget.TextView
 
 class login : ComponentActivity() {
@@ -26,7 +28,6 @@ class login : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login)
-
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken("980841101419-mus4beag1ququg6mo496j1u0ts62oleb.apps.googleusercontent.com")
@@ -82,8 +83,7 @@ class login : ComponentActivity() {
         }
     }
    fun navigateToNewActivity() {
-        val intent = Intent(this, dashboard::class.java)
-        startActivity(intent)
+        startActivity(Intent(this, dashboard::class.java))
         finish()
     }
     companion object {
@@ -95,4 +95,10 @@ class login : ComponentActivity() {
         editor.putBoolean("isLoggedIn", true)
         editor.apply()
     }
+//    override fun onBackPressed() {
+//        super.onBackPressed()
+//        finish()
+//    }
+
+
 }

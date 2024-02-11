@@ -10,19 +10,21 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Thread.sleep(500)
+//        Thread.sleep(500)
         setContentView(R.layout.sign_up)
-        val loginTextView: TextView = findViewById(R.id.myClickableText)
 
+        val loginTextView: TextView = findViewById(R.id.myClickableText)
         loginTextView.setOnClickListener(this)
 
         if (isLoggedIn()) {
             startActivity(Intent(this, dashboard::class.java))
             finish()
         } else {
-            Toast.makeText(this, "Please login to continue", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "Please login to continue", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this,sign_up::class.java))
         }
     }
 

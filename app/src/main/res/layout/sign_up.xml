@@ -70,17 +70,17 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="300dp"
-        android:layout_height="68dp"
+        android:layout_width="337dp"
+        android:layout_height="72dp"
         android:layout_marginBottom="36dp"
         android:text="@string/registration"
-        android:textSize="50dp"
+        android:textSize="57dp"
         app:layout_constraintBottom_toTopOf="@+id/signuppassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.594"
+        app:layout_constraintHorizontal_bias="0.783"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.224" />
+        app:layout_constraintVertical_bias="0.2" />
 
     <TextView
         android:id="@+id/haveanaccount"

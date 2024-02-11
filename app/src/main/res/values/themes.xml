@@ -20,7 +20,7 @@
     <style name="Theme.App.splash" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:windowSplashScreenBackground">@color/logo_color</item>
         <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
-        <item name="android:windowSplashScreenAnimationDuration">10000</item>
+        <item name="android:windowSplashScreenAnimationDuration">100</item>
         <item name="android:windowSplashScreenIconBackgroundColor">@color/black</item>
     </style>
 </resources>
