@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Thread.sleep(5000)
+        Thread.sleep(500)
         setContentView(R.layout.sign_up)
         val loginTextView: TextView = findViewById(R.id.myClickableText)
 
