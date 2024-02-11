@@ -13,6 +13,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthUserCollisionException
 
 class sign_up : AppCompatActivity() {
 
@@ -24,7 +25,6 @@ class sign_up : AppCompatActivity() {
     private lateinit var signuppassword: EditText
     private lateinit var button_sign_up: Button
     private lateinit var progressBar: ProgressBar
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -82,11 +82,28 @@ class sign_up : AppCompatActivity() {
                     saveLoginState()
                     intentOfSuccess()
                 } else {
-                    Toast.makeText(baseContext, "Sign up failed. Try again after some time.", Toast.LENGTH_SHORT).show()
-                    progressBar.visibility = View.GONE
-                }
+                    // Check if the failure is due to an email already in use
+                    if (task.exception is FirebaseAuthUserCollisionException) {
+                        // Display toast message indicating that the email already exists
+                        Toast.makeText(
+                            this,
+                            "This email is already registered.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    } else {
+                        if (task.exception is FirebaseAuthUserCollisionException) {
+                            // Display toast message indicating that the email already exists
+                            Toast.makeText(this, "This email is already registered.", Toast.LENGTH_SHORT).show()
+                        } else {
+                            // Handle other authentication failures
+                            Toast.makeText(baseContext, "Sign up failed. Try again after some time.", Toast.LENGTH_SHORT).show()
+                        }
+                        progressBar.visibility = View.GONE
+                    }
             }
     }
+}
+
     public override fun onStart() {
         super.onStart()
         val currentUser = auth.currentUser
