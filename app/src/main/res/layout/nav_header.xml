@@ -3,29 +3,47 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="176dp"
+    android:layout_height="wrap_content"
     android:gravity="bottom"
     android:padding="16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageView
-        android:layout_width="67dp"
-        android:layout_height="64dp"
-        android:src="@drawable/bill_gates" />
+        android:id="@+id/google_profile_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/bill_gates"
+        android:contentDescription="@string/profile_content_description" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/username_nav_header"
+        android:layout_width="249dp"
+        android:layout_marginStart="10dp"
         android:layout_height="wrap_content"
-        android:text="John Doe"
-        android:textColor="@color/white"
-        android:textStyle="bold"/>
+        android:text="@string/display_username"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textColorHighlight="@color/black"/>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/email"
+        android:layout_width="249dp"
+        android:text="@string/email"
+        android:layout_marginStart="10dp"
         android:layout_height="wrap_content"
-        android:text="contact@example.com"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        android:layout_marginBottom="16dp"/>
+        android:textColor="@color/black"
+        android:textColorHighlight="@color/black"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/uid"
+        android:text="@string/uid"
+        android:visibility="gone"
+        android:layout_marginStart="10dp"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textColorHighlight="@color/black" />
 
 </LinearLayout>

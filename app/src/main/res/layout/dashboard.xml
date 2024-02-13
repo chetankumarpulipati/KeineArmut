@@ -8,7 +8,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!-- Include DrawerLayout from drawer_layout.xml -->
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
@@ -35,7 +34,6 @@
                 android:id="@+id/fragment_container"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
-
         </LinearLayout>
 
         <com.google.android.material.navigation.NavigationView
@@ -47,10 +45,7 @@
             app:itemTextColor="@color/lavender"
             app:headerLayout="@layout/nav_header"
             app:menu="@menu/nav_menu" />
-
+       
     </androidx.drawerlayout.widget.DrawerLayout>
-
-    <!-- Your other views for the main content here -->
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

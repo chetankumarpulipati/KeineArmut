@@ -33,22 +33,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val userPreferences = UserPreferences(requireContext())
-        val textViewUsername = view.findViewById<TextView>(R.id.username)
-        val textViewEmail = view.findViewById<TextView>(R.id.email)
-        val textViewUid = view.findViewById<TextView>(R.id.uid)
-        val username = userPreferences.getUsername()
-        val email = userPreferences.getEmail()
-        val uid = userPreferences.getUid()
-
-        if (username.isNotEmpty() || email.isNotEmpty() || uid.isNotEmpty()) {
-            textViewUsername.text = username
-            textViewEmail.text = email
-            textViewUid.text = uid
-        } else {
-            Toast.makeText(requireContext(), "Unable to get Credentials", Toast.LENGTH_SHORT).show()
-        }
     }
 
     companion object {

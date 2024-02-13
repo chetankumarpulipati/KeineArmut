@@ -24,7 +24,6 @@ class login : ComponentActivity() {
     private lateinit var googleSignInClient: GoogleSignInClient
     val RC_SIGN_IN = 9001
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login)
@@ -70,6 +69,8 @@ class login : ComponentActivity() {
                             userPreferences.saveEmail(email ?: "")
                             val uid = it.uid
                             userPreferences.saveUid(uid ?: "")
+                            val profilePhotoUrl = it.photoUrl.toString()
+                            userPreferences.saveProfileUrl(profilePhotoUrl)
                         }
                         saveLoginState()
                         navigateToNewActivity()

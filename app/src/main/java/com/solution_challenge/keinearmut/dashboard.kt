@@ -1,15 +1,20 @@
 package com.solution_challenge.keinearmut
 
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.bumptech.glide.Glide
 import com.google.android.material.navigation.NavigationView
 
 class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -19,7 +24,7 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dashboard)
 
-        drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
+        drawerLayout = findViewById(R.id.drawer_layout)
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -37,6 +42,27 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                 .replace(R.id.fragment_container, HomeFragment()).commit()
             navigationView.setCheckedItem(R.id.nav_home)
         }
+
+        val userPreferences = UserPreferences(this)
+        val headerView = navigationView.getHeaderView(0)
+
+        val profilePhotoUrl = userPreferences.getProfileUrl()
+        Log.d("ProfileURL", "Profile photo URL: $profilePhotoUrl")
+        val profilePhotoImageView = headerView.findViewById<ImageView>(R.id.google_profile_image)
+
+        Glide.with(this)
+            .load(profilePhotoUrl) // Assuming you have a function to retrieve the profile photo URL from SharedPreferences
+            .placeholder(R.drawable.bill_gates) // Placeholder image while loading
+            .error(R.drawable.error) // Error image if loading fails
+            .into(profilePhotoImageView)
+
+        val textViewUsername = headerView.findViewById<TextView>(R.id.username_nav_header)
+        textViewUsername.text = userPreferences.getUsername()
+        val textViewEmail = headerView.findViewById<TextView>(R.id.email)
+        textViewEmail.text = userPreferences.getEmail()
+        val textViewUid = headerView.findViewById<TextView>(R.id.uid)
+        textViewUid.text = userPreferences.getUid()
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
