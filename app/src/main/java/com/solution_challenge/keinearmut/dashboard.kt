@@ -49,20 +49,39 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         val profilePhotoUrl = userPreferences.getProfileUrl()
         Log.d("ProfileURL", "Profile photo URL: $profilePhotoUrl")
         val profilePhotoImageView = headerView.findViewById<ImageView>(R.id.google_profile_image)
-
         Glide.with(this)
             .load(profilePhotoUrl) // Assuming you have a function to retrieve the profile photo URL from SharedPreferences
             .placeholder(R.drawable.bill_gates) // Placeholder image while loading
             .error(R.drawable.error) // Error image if loading fails
             .into(profilePhotoImageView)
 
-        val textViewUsername = headerView.findViewById<TextView>(R.id.username_nav_header)
-        textViewUsername.text = userPreferences.getUsername()
-        val textViewEmail = headerView.findViewById<TextView>(R.id.email)
-        textViewEmail.text = userPreferences.getEmail()
-        val textViewUid = headerView.findViewById<TextView>(R.id.uid)
-        textViewUid.text = userPreferences.getUid()
-
+        try{
+            val textViewUsername = headerView.findViewById<TextView>(R.id.username_nav_header)
+            textViewUsername.text = userPreferences.getUsername()
+            val textViewEmail = headerView.findViewById<TextView>(R.id.email)
+            textViewEmail.text = userPreferences.getEmail()
+            val textViewUid = headerView.findViewById<TextView>(R.id.uid)
+            textViewUid.text = userPreferences.getUid()
+        } catch (e: Exception) {
+            // Handle the specific exceptions that may occur
+            when (e) {
+                is NullPointerException -> {
+                    // Handle NullPointerException
+                    Log.e(TAG, "Null pointer exception occurred: ${e.message}")
+                    // Optionally, provide user feedback or perform error recovery
+                }
+                is IllegalStateException -> {
+                    // Handle IllegalStateException
+                    Log.e(TAG, "Illegal state exception occurred: ${e.message}")
+                    // Optionally, provide user feedback or perform error recovery
+                }
+                else -> {
+                    // Handle other exceptions
+                    Log.e(TAG, "An exception occurred: ${e.message}")
+                    // Optionally, provide user feedback or perform error recovery
+                }
+            }
+        }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -87,12 +106,8 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
             super.onBackPressed()
         }
     }
-//    override fun onPause() {
-//        super.onPause()
-//        val sharedPreferences = getSharedPreferences("app_state", MODE_PRIVATE)
-//        val editor = sharedPreferences.edit()
-//        editor.putBoolean("isDashboardOpen", true)
-//        editor.apply()
-//    }
+    companion object{
+        private const val TAG = "DashboardActivity"
+    }
 
 }

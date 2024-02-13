@@ -30,7 +30,7 @@ class UserPreferences(context: Context){
         return sharedPreferences.getString("uid", "")!!
     }
     fun saveProfileUrl(profileUrl: String) {
-        Log.d("UserPreferences", "Saving profile URL: $profileUrl")
+//        Log.d("UserPreferences", "Saving profile URL: $profileUrl")
         sharedPreferences.edit().putString(KEY_PROFILE_URL, profileUrl).apply()
     }
 
@@ -38,14 +38,11 @@ class UserPreferences(context: Context){
         return sharedPreferences.getString(KEY_PROFILE_URL, null)
     }
 
-    fun saveFullName(fullName: String){
-        sharedPreferences.edit().putString("fullName", fullName).apply()
+    fun saveRegEmail(email: String){
+        sharedPreferences.edit().putString("regEmail", email).apply()
     }
-    fun getFullName(): String{
-        return sharedPreferences.getString("fullName", "")!!
-    }
-    fun getMobile(mobile: String){
-        sharedPreferences.edit().putString("mobile", mobile).apply()
+    fun getRegEmail(): String{
+        return sharedPreferences.getString("regEmail", "")!!
     }
 
 
