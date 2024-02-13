@@ -8,7 +8,7 @@
     android:padding="16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/google_profile_image"
         android:layout_width="100dp"
         android:layout_height="100dp"
