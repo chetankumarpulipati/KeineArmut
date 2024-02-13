@@ -46,8 +46,6 @@ class UserPreferences(context: Context){
     }
     fun getMobile(mobile: String){
         sharedPreferences.edit().putString("mobile", mobile).apply()
-    }fun saveMobile(): String{
-        return sharedPreferences.getString("mobile", "")!!
     }
 
 

@@ -21,9 +21,9 @@ import android.widget.TextView
 
 class login : ComponentActivity() {
 
+    private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
     val RC_SIGN_IN = 9001
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login)
@@ -32,14 +32,36 @@ class login : ComponentActivity() {
             .requestIdToken("980841101419-mus4beag1ququg6mo496j1u0ts62oleb.apps.googleusercontent.com")
             .requestEmail()
             .build()
-
         googleSignInClient = GoogleSignIn.getClient(this, gso)
         val signinbutton = findViewById<SignInButton>(R.id.googleSignInButton)
         signinbutton.setOnClickListener {
             val signInIntent = googleSignInClient.signInIntent
             startActivityForResult(signInIntent, RC_SIGN_IN)
-
         }
+
+        auth = FirebaseAuth.getInstance()
+        val emailEditText = findViewById<EditText>(R.id.editTextText2)
+        val passwordEditText = findViewById<EditText>(R.id.editTextTextPassword2)
+        val signInButton = findViewById<Button>(R.id.loginButton_loginPage)
+        signInButton.setOnClickListener {
+            val email = emailEditText.text.toString()
+            val password = passwordEditText.text.toString()
+            signInWithEmail(email, password)
+        }
+        saveLoginState()
+    }
+    private fun signInWithEmail(email: String, password: String) {
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    val user = auth.currentUser
+                    navigateToNewActivity()
+                } else {
+                    Log.w(TAG, "signInWithEmail:failure", task.exception)
+                    Toast.makeText(this, "Authentication failed.",
+                        Toast.LENGTH_SHORT).show()
+                }
+            }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -51,7 +73,6 @@ class login : ComponentActivity() {
             handleSignInResult(task)
         }
     }
-
     fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
         try {
             val account = completedTask.getResult(Exception::class.java)!!
@@ -61,7 +82,7 @@ class login : ComponentActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         val user = firebaseAuth.currentUser
-                        user?.let{
+                        user?.let {
                             val userPreferences = UserPreferences(this)
                             val username = it.displayName
                             userPreferences.saveUsername(username ?: "")
@@ -72,7 +93,6 @@ class login : ComponentActivity() {
                             val profilePhotoUrl = it.photoUrl.toString()
                             userPreferences.saveProfileUrl(profilePhotoUrl)
                         }
-                        saveLoginState()
                         navigateToNewActivity()
                     } else {
                         Log.w(TAG, "signInWithEmail:failure", task.exception)
@@ -83,6 +103,7 @@ class login : ComponentActivity() {
             Toast.makeText(this, "Sign in failed", Toast.LENGTH_SHORT).show()
         }
     }
+
    fun navigateToNewActivity() {
         startActivity(Intent(this, dashboard::class.java))
         finish()
@@ -96,10 +117,4 @@ class login : ComponentActivity() {
         editor.putBoolean("isLoggedIn", true)
         editor.apply()
     }
-//    override fun onBackPressed() {
-//        super.onBackPressed()
-//        finish()
-//    }
-
-
 }
