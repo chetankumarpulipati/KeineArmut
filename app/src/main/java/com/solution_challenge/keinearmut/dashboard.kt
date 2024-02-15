@@ -58,9 +58,9 @@ class dashboard: AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
 
         try {
             headerView.findViewById<TextView>(R.id.username_nav_header).text = userPreferences.getUsername()
-            headerView.findViewById<TextView>(R.id.username_nav_header).text = userPreferences.getFullName()
+//            headerView.findViewById<TextView>(R.id.username_nav_header).text = userPreferences.getFullName()
             headerView.findViewById<TextView>(R.id.email).text = userPreferences.getEmail()
-            headerView.findViewById<TextView>(R.id.email).text = userPreferences.getRegEmail()
+//            headerView.findViewById<TextView>(R.id.email).text = userPreferences.getRegEmail()
             headerView.findViewById<TextView>(R.id.uid).text = userPreferences.getUid()
         } catch (e: Exception) {
             Log.e(TAG, "An exception occurred: ${e.message}")

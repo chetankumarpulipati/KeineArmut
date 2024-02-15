@@ -42,6 +42,7 @@ class login : ComponentActivity() {
         val emailEditText = findViewById<EditText>(R.id.editTextText2)
         val passwordEditText = findViewById<EditText>(R.id.editTextTextPassword2)
         val signInButton = findViewById<Button>(R.id.loginButton_loginPage)
+
         signInButton.setOnClickListener {
             val email = emailEditText.text.toString()
             val password = passwordEditText.text.toString()
@@ -50,6 +51,10 @@ class login : ComponentActivity() {
         saveLoginState()
     }
     private fun signInWithEmail(email: String, password: String) {
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Please enter email and password", Toast.LENGTH_SHORT).show()
+            return
+        }
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
