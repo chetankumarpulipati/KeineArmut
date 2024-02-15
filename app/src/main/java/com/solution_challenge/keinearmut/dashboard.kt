@@ -88,7 +88,6 @@ class dashboard: AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
                 finish()
             }
         }
-
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
