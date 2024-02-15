@@ -1,5 +1,6 @@
 package com.solution_challenge.keinearmut
 
+import android.accounts.AccountManager
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +16,7 @@ import com.bumptech.glide.Glide
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import android.content.Context
+import android.widget.Toast
 
 class dashboard: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var drawerLayout: DrawerLayout
@@ -82,9 +84,8 @@ class dashboard: AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
                 .replace(R.id.fragment_container, feedbackFragment()).commit()
             R.id.nav_logout -> {
                 firebaseAuth.signOut()
-//                clearAuthenticationState()
-                saveLogoutState()
-                navigateToNewActivity()
+                clearAuthenticationState()
+                navigateToNewActivit()
                 finish()
             }
         }
@@ -108,14 +109,16 @@ class dashboard: AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
             super.onBackPressed()
         }
     }
-    fun navigateToNewActivity() {
+    fun navigateToNewActivit() {
+        Toast.makeText(this, "You have been logged out", Toast.LENGTH_SHORT).show()
         startActivity(Intent(this, sign_up::class.java))
-        finish()
+        saveLogoutState()
     }
     fun saveLogoutState() {
-        val sharedPreferences = getSharedPreferences("login_state", Context.MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences("logout_state", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
-        editor.putBoolean("isLoggedIn", false)
+        editor.putBoolean("isLoggedOut",true)
         editor.apply()
     }
+
 }

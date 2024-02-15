@@ -24,9 +24,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         if (isLoggedIn()) {
             startActivity(Intent(this, dashboard::class.java))
             finish()
-        } else {
-//            Toast.makeText(this, "Please login to continue", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(this,sign_up::class.java))
+        }else{
+            startActivity(Intent(this, login::class.java))
+            finish()
+
         }
 
     }
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val sharedPreferences = getSharedPreferences("login_state", MODE_PRIVATE)
         return sharedPreferences.getBoolean("isLoggedIn", false)
     }
+
 
     override fun onClick(view: View) {
         if (view.id == R.id.myClickableText) {

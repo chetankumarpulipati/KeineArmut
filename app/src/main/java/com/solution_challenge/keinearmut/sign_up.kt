@@ -57,7 +57,7 @@ class sign_up : AppCompatActivity() {
             userPreferences.saveUserName(fullName)
             userPreferences.saveRegEmail(email)
 //            Log.d("username_store_check",fullName)
-            Log.d("useremail_store_check",email)
+//            Log.d("useremail_store_check",email)
 
             if (!isValidEmail(email)) {
                 signupemail.error = "Enter valid email address"
@@ -71,6 +71,9 @@ class sign_up : AppCompatActivity() {
 
             signUp(email, password)
 
+        }
+        if(isLoggedOut()){
+            Toast.makeText(this, "You have been logged out", Toast.LENGTH_SHORT).show()
         }
 
     }
@@ -134,5 +137,9 @@ class sign_up : AppCompatActivity() {
     }
     companion object {
         private const val TAG = "sign_up"
+    }
+    private fun isLoggedOut(): Boolean {
+        val sharedPreferences = getSharedPreferences("login_state", MODE_PRIVATE)
+        return sharedPreferences.getBoolean("isLoggedOut", false)
     }
 }
