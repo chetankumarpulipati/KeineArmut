@@ -1,5 +1,6 @@
 package com.solution_challenge.keinearmut
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -26,6 +27,7 @@ class sign_up : AppCompatActivity() {
     private lateinit var signuppassword: EditText
     private lateinit var button_sign_up: Button
     private lateinit var progressBar: ProgressBar
+    private lateinit var userPreferences: UserPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +39,7 @@ class sign_up : AppCompatActivity() {
         button_sign_up = findViewById(R.id.button_sign_up)
         auth = FirebaseAuth.getInstance()
         progressBar = findViewById(R.id.progressBar)
+        userPreferences = UserPreferences(this)
 
         val loginTextView: TextView = findViewById(R.id.myClickableText)
 
@@ -47,8 +50,14 @@ class sign_up : AppCompatActivity() {
         }
 
         button_sign_up.setOnClickListener {
+            val fullName = fullname.text.toString()
             val email = signupemail.text.toString()
             val password = signuppassword.text.toString()
+
+            userPreferences.saveUserName(fullName)
+            userPreferences.saveRegEmail(email)
+//            Log.d("username_store_check",fullName)
+            Log.d("useremail_store_check",email)
 
             if (!isValidEmail(email)) {
                 signupemail.error = "Enter valid email address"
@@ -126,7 +135,4 @@ class sign_up : AppCompatActivity() {
     companion object {
         private const val TAG = "sign_up"
     }
-//    val inputPassword = "password123"
-//    val hashedPassword = HashUtils.hashString(inputPassword)
-//    Log.d(TAG,"Hashed Password: $hashedPassword")
 }

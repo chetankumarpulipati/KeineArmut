@@ -28,14 +28,15 @@
             android:title="About Us"/>
 
         <item
+            android:id="@+id/nav_feedback"
+            android:icon="@drawable/icon_feedback"
+            android:title="Feedback"/>
+
+        <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/icon_logout"
             android:title="Logout"/>
-        <item
-            android:id="@+id/nav_report"
-            android:icon="@drawable/icon_report"
-            android:title="Report"/>
     </group>
-?
+
 
 </menu>

@@ -44,6 +44,11 @@ class UserPreferences(context: Context){
     fun getRegEmail(): String{
         return sharedPreferences.getString("regEmail", "")!!
     }
-
+    fun saveUserName(fullName: String){
+        sharedPreferences.edit().putString("fullName", fullName ).apply()
+    }
+    fun getFullName(): String{
+        return sharedPreferences.getString("fullName", "")!!
+    }
 
 }

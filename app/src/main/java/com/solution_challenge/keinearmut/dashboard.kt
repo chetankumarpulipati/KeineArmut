@@ -1,41 +1,44 @@
 package com.solution_challenge.keinearmut
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
-import android.view.View
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.bumptech.glide.Glide
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
+import android.content.Context
 
-class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class dashboard: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var drawerLayout: DrawerLayout
+    private lateinit var firebaseAuth: FirebaseAuth
 
+    companion object {
+        private const val TAG = "DashboardActivity"
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dashboard)
 
         drawerLayout = findViewById(R.id.drawer_layout)
-
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
         val toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close)
-
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
         val navigationView = findViewById<NavigationView>(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)
+
+        firebaseAuth = FirebaseAuth.getInstance()
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
@@ -47,41 +50,22 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         val headerView = navigationView.getHeaderView(0)
 
         val profilePhotoUrl = userPreferences.getProfileUrl()
-        Log.d("ProfileURL", "Profile photo URL: $profilePhotoUrl")
-        val profilePhotoImageView = headerView.findViewById<ImageView>(R.id.google_profile_image)
         Glide.with(this)
-            .load(profilePhotoUrl) // Assuming you have a function to retrieve the profile photo URL from SharedPreferences
-            .placeholder(R.drawable.bill_gates) // Placeholder image while loading
-            .error(R.drawable.error) // Error image if loading fails
-            .into(profilePhotoImageView)
+            .load(profilePhotoUrl)
+            .placeholder(R.drawable.bill_gates)
+            .error(R.drawable.error)
+            .into(headerView.findViewById<ImageView>(R.id.google_profile_image))
 
-        try{
-            val textViewUsername = headerView.findViewById<TextView>(R.id.username_nav_header)
-            textViewUsername.text = userPreferences.getUsername()
-            val textViewEmail = headerView.findViewById<TextView>(R.id.email)
-            textViewEmail.text = userPreferences.getEmail()
-            val textViewUid = headerView.findViewById<TextView>(R.id.uid)
-            textViewUid.text = userPreferences.getUid()
+        try {
+            headerView.findViewById<TextView>(R.id.username_nav_header).text = userPreferences.getUsername()
+            headerView.findViewById<TextView>(R.id.username_nav_header).text = userPreferences.getFullName()
+            headerView.findViewById<TextView>(R.id.email).text = userPreferences.getEmail()
+            headerView.findViewById<TextView>(R.id.email).text = userPreferences.getRegEmail()
+            headerView.findViewById<TextView>(R.id.uid).text = userPreferences.getUid()
         } catch (e: Exception) {
-            // Handle the specific exceptions that may occur
-            when (e) {
-                is NullPointerException -> {
-                    // Handle NullPointerException
-                    Log.e(TAG, "Null pointer exception occurred: ${e.message}")
-                    // Optionally, provide user feedback or perform error recovery
-                }
-                is IllegalStateException -> {
-                    // Handle IllegalStateException
-                    Log.e(TAG, "Illegal state exception occurred: ${e.message}")
-                    // Optionally, provide user feedback or perform error recovery
-                }
-                else -> {
-                    // Handle other exceptions
-                    Log.e(TAG, "An exception occurred: ${e.message}")
-                    // Optionally, provide user feedback or perform error recovery
-                }
-            }
+            Log.e(TAG, "An exception occurred: ${e.message}")
         }
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -94,11 +78,30 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                 .replace(R.id.fragment_container, ShareFragment()).commit()
             R.id.nav_about -> supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, AboutFragment()).commit()
+            R.id.nav_feedback -> supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, feedbackFragment()).commit()
+            R.id.nav_logout -> {
+                firebaseAuth.signOut()
+//                clearAuthenticationState()
+                saveLogoutState()
+                navigateToNewActivity()
+                finish()
+            }
         }
+
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
-
+    private fun clearAuthenticationState() {
+        val sharedPreferences = getSharedPreferences("auth", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("authenticated", false)
+        editor.apply()
+    }
+    private fun isUserAuthenticated(): Boolean {
+        val sharedPreferences = getSharedPreferences("auth", Context.MODE_PRIVATE)
+        return sharedPreferences.getBoolean("authenticated", false)
+    }
     override fun onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)
@@ -106,8 +109,14 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
             super.onBackPressed()
         }
     }
-    companion object{
-        private const val TAG = "DashboardActivity"
+    fun navigateToNewActivity() {
+        startActivity(Intent(this, sign_up::class.java))
+        finish()
     }
-
+    fun saveLogoutState() {
+        val sharedPreferences = getSharedPreferences("login_state", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("isLoggedIn", false)
+        editor.apply()
+    }
 }

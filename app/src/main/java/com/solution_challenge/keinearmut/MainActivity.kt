@@ -9,12 +9,13 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.google.firebase.auth.FirebaseAuth
+import android.content.Context
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        Thread.sleep(500)
+        Thread.sleep(500)
         setContentView(R.layout.sign_up)
 
         val loginTextView: TextView = findViewById(R.id.myClickableText)
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 //            Toast.makeText(this, "Please login to continue", Toast.LENGTH_SHORT).show()
             startActivity(Intent(this,sign_up::class.java))
         }
+
     }
 
     private fun isLoggedIn(): Boolean {
