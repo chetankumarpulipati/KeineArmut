@@ -1,6 +1,5 @@
 package com.solution_challenge.keinearmut
 
-import android.accounts.AccountManager
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -67,6 +66,8 @@ class dashboard: AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
         } catch (e: Exception) {
             Log.e(TAG, "An exception occurred: ${e.message}")
         }
+//        val intent = Intent(this, location_access::class.java)
+//        startActivity(intent)
 
     }
 
@@ -83,10 +84,8 @@ class dashboard: AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
             R.id.nav_feedback -> supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, feedbackFragment()).commit()
             R.id.nav_logout -> {
-                firebaseAuth.signOut()
-                clearAuthenticationState()
-                navigateToNewActivit()
-                finish()
+                logout()
+                navigateToSignUp()
             }
         }
         drawerLayout.closeDrawer(GravityCompat.START)
@@ -119,6 +118,17 @@ class dashboard: AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
         val editor = sharedPreferences.edit()
         editor.putBoolean("isLoggedOut",true)
         editor.apply()
+    }
+    private fun logout() {
+        firebaseAuth.signOut()
+        navigateToSignUp()
+    }
+
+    private fun navigateToSignUp() {
+        val intent = Intent(this, sign_up::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish()
     }
 
 }

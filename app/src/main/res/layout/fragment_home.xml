@@ -14,193 +14,196 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Choose required help"
+                android:textSize="35sp"
+                android:layout_gravity="bottom|center_horizontal"/>
 
             <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="214dp"
+                android:layout_height="218dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
+                android:layout_gravity="bottom|center_horizontal"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="10dp"
                 app:cardMaxElevation="12dp"
                 app:cardPreventCornerOverlap="true"
-                app:cardUseCompatPadding="true"
-                android:clickable="true"
-                android:foreground="?android:attr/selectableItemBackground">
+                app:cardUseCompatPadding="true">
 
                 <ImageView
                     android:id="@+id/img"
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
+                    android:layout_width="147dp"
+                    android:layout_height="153dp"
                     android:layout_gravity="center"
                     android:layout_margin="10dp"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/bill_gates" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|center_horizontal"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:text="@string/app_name"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
+                    android:src="@drawable/food" />
             </androidx.cardview.widget.CardView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="Food"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="214dp"
+                android:layout_height="218dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
+                android:layout_gravity="bottom|center_horizontal"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="10dp"
                 app:cardMaxElevation="12dp"
                 app:cardPreventCornerOverlap="true"
-                app:cardUseCompatPadding="true"
-                android:clickable="true"
-                android:foreground="?android:attr/selectableItemBackground">
+                app:cardUseCompatPadding="true">
 
-                <!-- Second ImageView -->
                 <ImageView
                     android:id="@+id/img2"
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
+                    android:layout_width="151dp"
+                    android:layout_height="165dp"
                     android:layout_gravity="center"
-                    android:layout_margin="10dp"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/bill_gates" />
-
-                <!-- TextView inside the CardView -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|center_horizontal"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:text="@string/app_name"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:src="@drawable/security" />
 
             </androidx.cardview.widget.CardView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="Security"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="214dp"
+                android:layout_height="218dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
+                android:layout_gravity="bottom|center_horizontal"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="10dp"
                 app:cardMaxElevation="12dp"
                 app:cardPreventCornerOverlap="true"
-                app:cardUseCompatPadding="true"
-                android:clickable="true"
-                android:foreground="?android:attr/selectableItemBackground">
+                app:cardUseCompatPadding="true">
 
                 <ImageView
                     android:id="@+id/img3"
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:layout_gravity="center"
+                    android:layout_width="154dp"
+                    android:layout_height="142dp"
+                    android:layout_gravity="bottom|center_horizontal"
                     android:layout_margin="10dp"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/bill_gates" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|center_horizontal"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:text="@string/app_name"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
+                    android:src="@drawable/healthcare" />
             </androidx.cardview.widget.CardView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="Healthcare"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="214dp"
+                android:layout_height="218dp"
+                android:layout_gravity="bottom|center_horizontal"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="10dp"
                 app:cardMaxElevation="12dp"
                 app:cardPreventCornerOverlap="true"
-                app:cardUseCompatPadding="true"
-                android:clickable="true"
-                android:foreground="?android:attr/selectableItemBackground">
+                app:cardUseCompatPadding="true">
 
                 <ImageView
                     android:id="@+id/img4"
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="10dp"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/bill_gates" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="131dp"
+                    android:layout_height="111dp"
                     android:layout_gravity="bottom|center_horizontal"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:text="@string/app_name"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:layout_marginBottom="30dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/education" />
 
             </androidx.cardview.widget.CardView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="20dp"
+                android:text="Education"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="214dp"
+                android:layout_height="218dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
+                android:clickable="true"
+                android:layout_gravity="bottom|center_horizontal"
+                android:foreground="?android:attr/selectableItemBackground"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="10dp"
                 app:cardMaxElevation="12dp"
                 app:cardPreventCornerOverlap="true"
-                app:cardUseCompatPadding="true"
-                android:clickable="true"
-                android:foreground="?android:attr/selectableItemBackground">
+                app:cardUseCompatPadding="true">
 
                 <ImageView
                     android:id="@+id/img5"
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:layout_gravity="center"
+                    android:layout_width="145dp"
+                    android:layout_height="146dp"
+                    android:layout_gravity="bottom|center_horizontal"
                     android:layout_margin="10dp"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/bill_gates" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|center_horizontal"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:text="@string/app_name"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:src="@drawable/employment" />
 
             </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="Employment"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
 
         </LinearLayout>

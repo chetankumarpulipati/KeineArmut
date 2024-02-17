@@ -16,13 +16,23 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import android.widget.EditText
 import android.widget.TextView
+import android.Manifest
+import android.app.AlertDialog
+import android.content.pm.PackageManager
+import android.os.Build
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
+import androidx.core.app.NotificationManagerCompat
 import com.google.android.material.navigation.NavigationView
+import android.provider.Settings
+import android.net.Uri
 
 class login : ComponentActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
     val RC_SIGN_IN = 9001
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login)
@@ -48,6 +58,7 @@ class login : ComponentActivity() {
             val password = passwordEditText.text.toString()
             signInWithEmail(email, password)
         }
+        location_access()
         saveLoginState()
     }
     private fun signInWithEmail(email: String, password: String) {
@@ -115,10 +126,59 @@ class login : ComponentActivity() {
     companion object {
         private const val TAG = "LoginActivity"
     }
+    @RequiresApi(Build.VERSION_CODES.N)
+    fun location_access(){
+        if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
+            checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            return
+        }
+
+        val locationPermissionRequest = registerForActivityResult(
+            ActivityResultContracts.RequestMultiplePermissions()
+        ) { permissions ->
+            when {
+                permissions.getOrDefault(Manifest.permission.ACCESS_FINE_LOCATION, false) -> {
+                    checkNotificationPermission()
+                }
+                permissions.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION, false) -> {
+
+                } else -> {
+                checkNotificationPermission()
+            }
+            }
+        }
+        locationPermissionRequest.launch(arrayOf(
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION))
+    }
     private fun saveLoginState() {
         val sharedPreferences = getSharedPreferences("login_state", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putBoolean("isLoggedIn", true)
         editor.apply()
+    }
+    private fun checkNotificationPermission() {
+        if (!NotificationManagerCompat.from(this).areNotificationsEnabled()) {
+            showNotificationPermissionDialog()
+        }
+    }
+    private fun showNotificationPermissionDialog() {
+        AlertDialog.Builder(this)
+            .setTitle("Notification Permission Needed")
+            .setMessage("This app needs notification permissions to work properly. Do you want to enable it?")
+            .setPositiveButton("Yes") { _, _ ->
+                openAppSettings()
+            }
+            .setNegativeButton("No") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .create()
+            .show()
+    }
+    private fun openAppSettings() {
+        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+        val uri = Uri.fromParts("package", packageName, null)
+        intent.data = uri
+        startActivity(intent)
     }
 }

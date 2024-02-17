@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.solution_challenge.keinearmut"
-        minSdk = 21
+        minSdk = 31
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -38,6 +38,7 @@ android {
 
 dependencies {
     val nav_version = "2.7.7"
+    implementation("com.google.android.libraries.generativeai:gemini-client-sdk:+")
     implementation("com.github.bumptech.glide:glide:4.12.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
     implementation("androidx.core:core-splashscreen:1.0.1")
