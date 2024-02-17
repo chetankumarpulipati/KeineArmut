@@ -15,7 +15,6 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import android.widget.EditText
-import android.widget.TextView
 import android.Manifest
 import android.app.AlertDialog
 import android.content.pm.PackageManager
@@ -23,15 +22,21 @@ import android.os.Build
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationManagerCompat
-import com.google.android.material.navigation.NavigationView
 import android.provider.Settings
 import android.net.Uri
+import android.widget.TextView
+import android.text.SpannableStringBuilder
+import android.text.SpannableString
+import android.text.method.LinkMovementMethod
+import android.view.View
+import android.text.style.ClickableSpan
 
 class login : ComponentActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
     val RC_SIGN_IN = 9001
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +62,23 @@ class login : ComponentActivity() {
             val email = emailEditText.text.toString()
             val password = passwordEditText.text.toString()
             signInWithEmail(email, password)
+        }
+        val spannableString = SpannableString(getString(R.string.text_with_clickable_span))
+        val clickableText = "Sign up"
+        val start = spannableString.indexOf(clickableText)
+        val textViewClickable = findViewById<TextView>(R.id.signup_page)
+        if (start != -1) {
+            val end = start + clickableText.length
+            val clickableSpan = object : ClickableSpan() {
+                override fun onClick(widget: View) {
+                    startActivity(Intent(this@login, sign_up::class.java))
+                }
+            }
+            spannableString.setSpan(clickableSpan, start, end, SpannableStringBuilder.SPAN_EXCLUSIVE_EXCLUSIVE)
+            textViewClickable.text = spannableString
+            textViewClickable.movementMethod = LinkMovementMethod.getInstance()
+        } else {
+            Log.e(TAG, "Clickable text not found in string resource")
         }
         location_access()
         saveLoginState()
@@ -181,4 +203,5 @@ class login : ComponentActivity() {
         intent.data = uri
         startActivity(intent)
     }
+
 }

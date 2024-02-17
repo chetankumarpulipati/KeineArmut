@@ -27,7 +27,6 @@ class dashboard: AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dashboard)
-
         drawerLayout = findViewById(R.id.drawer_layout)
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -86,16 +85,6 @@ class dashboard: AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
-    private fun clearAuthenticationState() {
-        val sharedPreferences = getSharedPreferences("auth", Context.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        editor.putBoolean("authenticated", false)
-        editor.apply()
-    }
-    private fun isUserAuthenticated(): Boolean {
-        val sharedPreferences = getSharedPreferences("auth", Context.MODE_PRIVATE)
-        return sharedPreferences.getBoolean("authenticated", false)
-    }
     override fun onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)
@@ -103,20 +92,17 @@ class dashboard: AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
             super.onBackPressed()
         }
     }
-    fun navigateToNewActivit() {
-        Toast.makeText(this, "You have been logged out", Toast.LENGTH_SHORT).show()
-        startActivity(Intent(this, sign_up::class.java))
-        saveLogoutState()
-    }
     fun saveLogoutState() {
         val sharedPreferences = getSharedPreferences("logout_state", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putBoolean("isLoggedOut",true)
         editor.apply()
     }
-    private fun logout() {
+    private fun logout(): Boolean {
         firebaseAuth.signOut()
-        navigateToSignUp()
+        saveLogoutState()
+        Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show()
+        return true
     }
 
     private fun navigateToSignUp() {

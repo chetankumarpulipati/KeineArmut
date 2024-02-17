@@ -35,4 +35,5 @@
     <string name="profile_content_description">Profile_Picture</string>
     <string name="nav_feedback">Feedback</string>
     <string name="nav_logout">Logout</string>
+    <string name="text_with_clickable_span">Dont have an account?<span id="clickable_text" textColor="black"> Sign up </span> </string>
 </resources>
