@@ -18,14 +18,9 @@
             android:title="Settings"/>
 
         <item
-            android:id="@+id/nav_share"
-            android:icon="@drawable/icon_share"
-            android:title="Share"/>
-
-        <item
-            android:id="@+id/nav_about"
+            android:id="@+id/nav_ai_assistant"
             android:icon="@drawable/icon_info"
-            android:title="About Us"/>
+            android:title="Gemini Assistant"/>
 
         <item
             android:id="@+id/nav_feedback"

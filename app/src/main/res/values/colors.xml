@@ -26,4 +26,6 @@
     <color name="teal_700">#FF018786</color>
     <color name="lavender">#8692f7</color>
     <color name="logo_color">#bfa869</color>
+    <color name="textColorLight">#000000</color> <!-- Black for light theme -->
+    <color name="textColorDark">#FF0000</color> <!-- Red for dark theme -->
 </resources>

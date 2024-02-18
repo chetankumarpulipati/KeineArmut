@@ -23,4 +23,14 @@
         <item name="android:windowSplashScreenAnimationDuration">100</item>
         <item name="android:windowSplashScreenIconBackgroundColor">@color/black</item>
     </style>
+    
+    <!-- Light theme. -->
+    <style name="Theme.MyApp" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="android:textColor">@color/textColorLight</item>
+    </style>
+
+    <!-- Dark theme. -->
+    <style name="Theme.MyApp.Dark" parent="Theme.MaterialComponents">
+        <item name="android:textColor">@color/textColorDark</item>
+    </style>
 </resources>

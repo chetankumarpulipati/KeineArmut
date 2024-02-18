@@ -80,7 +80,6 @@ class login : ComponentActivity() {
         } else {
             Log.e(TAG, "Clickable text not found in string resource")
         }
-        location_access()
         saveLoginState()
     }
     private fun signInWithEmail(email: String, password: String) {
@@ -148,60 +147,11 @@ class login : ComponentActivity() {
     companion object {
         private const val TAG = "LoginActivity"
     }
-    @RequiresApi(Build.VERSION_CODES.N)
-    fun location_access(){
-        if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
-            checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            return
-        }
-
-        val locationPermissionRequest = registerForActivityResult(
-            ActivityResultContracts.RequestMultiplePermissions()
-        ) { permissions ->
-            when {
-                permissions.getOrDefault(Manifest.permission.ACCESS_FINE_LOCATION, false) -> {
-                    checkNotificationPermission()
-                }
-                permissions.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION, false) -> {
-
-                } else -> {
-                checkNotificationPermission()
-            }
-            }
-        }
-        locationPermissionRequest.launch(arrayOf(
-            Manifest.permission.ACCESS_FINE_LOCATION,
-            Manifest.permission.ACCESS_COARSE_LOCATION))
-    }
     private fun saveLoginState() {
         val sharedPreferences = getSharedPreferences("login_state", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putBoolean("isLoggedIn", true)
         editor.apply()
-    }
-    private fun checkNotificationPermission() {
-        if (!NotificationManagerCompat.from(this).areNotificationsEnabled()) {
-            showNotificationPermissionDialog()
-        }
-    }
-    private fun showNotificationPermissionDialog() {
-        AlertDialog.Builder(this)
-            .setTitle("Notification Permission Needed")
-            .setMessage("This app needs notification permissions to work properly. Do you want to enable it?")
-            .setPositiveButton("Yes") { _, _ ->
-                openAppSettings()
-            }
-            .setNegativeButton("No") { dialog, _ ->
-                dialog.dismiss()
-            }
-            .create()
-            .show()
-    }
-    private fun openAppSettings() {
-        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-        val uri = Uri.fromParts("package", packageName, null)
-        intent.data = uri
-        startActivity(intent)
     }
 
 }
