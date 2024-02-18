@@ -19,7 +19,7 @@
             android:textSize="50sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.462"
+            app:layout_constraintHorizontal_bias="0.523"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.006" />
@@ -52,19 +52,33 @@
             android:padding="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.512"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/photoImageView"
-            app:layout_constraintVertical_bias="0.117" />
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/benificiary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Beneficiary"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionEditText" />
 
         <Button
-            android:id="@+id/uploadButton"
-            android:layout_width="105dp"
+            android:id="@+id/button_booked"
+            android:layout_width="297dp"
             android:layout_height="39dp"
-            android:layout_below="@id/descriptionEditText"
-            android:text="Upload"
+            android:text="Yes, I want the food"
+            android:layout_marginTop="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/descriptionEditText" />
+            app:layout_constraintTop_toBottomOf="@+id/benificiary"
+            app:layout_constraintVertical_bias="1.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

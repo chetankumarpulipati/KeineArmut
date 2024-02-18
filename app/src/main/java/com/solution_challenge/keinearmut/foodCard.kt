@@ -20,6 +20,7 @@ class foodCard : AppCompatActivity() {
 
     private val REQUEST_IMAGE_PICK = 1
     private lateinit var photoImageView: ImageView
+    private lateinit var button_booked: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +28,10 @@ class foodCard : AppCompatActivity() {
         photoImageView = findViewById(R.id.photoImageView)
         photoImageView.setOnClickListener {
             dispatchPickImageIntent()
+        }
+        button_booked = findViewById(R.id.button_booked)
+        button_booked.setOnClickListener {
+            Toast.makeText(this, "Your food will be delivered in 30 minutes", Toast.LENGTH_SHORT).show()
         }
     }
 

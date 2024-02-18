@@ -28,16 +28,21 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-        // Find the CardView within the inflated view
-        val cardView: CardView = view.findViewById(R.id.img)
 
-        // Set click listener for the CardView
+        val cardView: CardView = view.findViewById(R.id.img)
+        val cardView2: CardView = view.findViewById(R.id.img4)
+
         cardView.setOnClickListener {
             startActivity(Intent(activity, foodCard::class.java))
         }
+
+        cardView2.setOnClickListener {
+            startActivity(Intent(activity, educationCard::class.java))
+        }
+
 
         return view
     }
