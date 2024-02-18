@@ -36,7 +36,7 @@ class HomeFragment : Fragment() {
 
         // Set click listener for the CardView
         cardView.setOnClickListener {
-          startActivity(Intent(activity, FoodCard::class.java))
+            startActivity(Intent(activity, foodCard::class.java))
         }
 
         return view
