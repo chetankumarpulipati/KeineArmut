@@ -71,8 +71,6 @@ class dashboard: AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
                 .replace(R.id.fragment_container, HomeFragment()).commit()
             R.id.nav_settings -> supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, SettingsFragment()).commit()
-            R.id.nav_ai_assistant -> supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, AiAssistantFragment()).commit()
             R.id.nav_feedback -> supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, feedbackFragment()).commit()
             R.id.nav_logout -> {

@@ -34,6 +34,7 @@ class HomeFragment : Fragment() {
 
         val cardView: CardView = view.findViewById(R.id.img)
         val cardView2: CardView = view.findViewById(R.id.img4)
+        val cardView3: CardView = view.findViewById(R.id.healthcare)
 
         cardView.setOnClickListener {
             startActivity(Intent(activity, foodCard::class.java))
@@ -42,7 +43,9 @@ class HomeFragment : Fragment() {
         cardView2.setOnClickListener {
             startActivity(Intent(activity, educationCard::class.java))
         }
-
+        cardView3.setOnClickListener {
+            startActivity(Intent(activity, healthCard::class.java))
+        }
 
         return view
     }

@@ -104,6 +104,7 @@
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/healthcare"
                     android:layout_width="190dp"
                     android:layout_height="218dp"
                     android:clickable="true"
