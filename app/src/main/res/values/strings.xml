@@ -36,4 +36,11 @@
     <string name="nav_feedback">Feedback</string>
     <string name="nav_logout">Logout</string>
     <string name="text_with_clickable_span">Dont have an account?<span id="clickable_text" textColor="black"> Sign up </span> </string>
+    <string name="drop_down">Dropdown Menu</string>
+    <string name="select_item">Select Item</string>
+    <string-array name="dropdown_menu">
+        <item>Item 1</item>
+        <item>Item 2</item>
+        <item>Item 3</item>
+    </string-array>
 </resources>
