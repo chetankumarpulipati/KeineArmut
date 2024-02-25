@@ -166,7 +166,7 @@
         android:background="#E5DFE8"
         android:ems="10"
         android:textAlignment="center"
-        android:textColor="#FDF6FE"
+        android:textColor="@color/red"
         android:textSize="30sp" />
 
 
