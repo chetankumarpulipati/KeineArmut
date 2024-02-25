@@ -112,7 +112,6 @@ class employmentCard: AppCompatActivity() {
             val jsonObjectRequest = JsonObjectRequest(
                 Request.Method.POST, url, jsonObject,
                 Response.Listener { response ->
-                    // Handle the API response here
                     val prediction = response.getString("poverty-status")
                     if (prediction =="0"){
                         result.text = "Below Poverty"
@@ -123,17 +122,12 @@ class employmentCard: AppCompatActivity() {
 
                 },
                 Response.ErrorListener { error ->
-                    // Handle errors here
                     Toast.makeText(this, "Error: ${error.message}", Toast.LENGTH_SHORT).show()
                 })
 
             requestQueue.add(jsonObjectRequest)
         }
         }
-
-
-
-
     }
 
 
