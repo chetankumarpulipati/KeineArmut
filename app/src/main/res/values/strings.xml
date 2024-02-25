@@ -36,11 +36,27 @@
     <string name="nav_feedback">Feedback</string>
     <string name="nav_logout">Logout</string>
     <string name="text_with_clickable_span">Dont have an account?<span id="clickable_text" textColor="black"> Sign up </span> </string>
-    <string name="drop_down">Dropdown Menu</string>
+    <string name="drop_down1">Work Class</string>
+    <string name="drop_down2">Education</string>
+    <string name="drop_down3">Marital Status</string>
     <string name="select_item">Select Item</string>
+    <string name="Result"></string>
     <string-array name="dropdown_menu">
-        <item>Item 1</item>
-        <item>Item 2</item>
-        <item>Item 3</item>
+        <item>Formal</item>
+        <item>Self</item>
+        <item>Unemployed</item>
     </string-array>
+    <string-array name="dropdown_menu2">
+        <item>dropout</item>
+        <item>HS dropout</item>
+        <item>HS-grad</item>
+        <item>Intermediate Education</item>
+        <item>Bachelors/Doctoral</item>
+    </string-array>
+    <string-array name="dropdown_menu3">
+        <item>Never Married</item>
+        <item>Currently Married</item>
+        <item>Previously Married</item>
+    </string-array>
+
 </resources>

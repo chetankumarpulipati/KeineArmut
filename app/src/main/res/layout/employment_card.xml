@@ -11,7 +11,7 @@
         android:id="@+id/radioGroupGender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="290dp"
         android:layout_gravity="center_horizontal"
         android:orientation="horizontal">
 
@@ -36,10 +36,59 @@
     </RadioGroup>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="252dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="70dp"
+        android:ems="11"
+        android:hint="Enter name"
+        android:inputType="text"
+        android:layout_gravity="center_horizontal"
+        />
+    <EditText
+        android:id="@+id/age"
+        android:layout_width="252dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="120dp"
+        android:ems="11"
+        android:hint="Enter Your age"
+        android:inputType="text"
+        android:layout_gravity="center_horizontal"
+        />
+    <EditText
+        android:id="@+id/income"
+        android:layout_width="252dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="170dp"
+        android:ems="11"
+        android:hint="Enter Your Income"
+        android:inputType="text"
+        android:layout_gravity="center_horizontal"
+        />
+    <EditText
+        android:id="@+id/hoursperweek"
+        android:layout_width="252dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="220dp"
+        android:ems="11"
+        android:hint="Work Hours per week 20-70"
+        android:inputType="text"
+        android:layout_gravity="center_horizontal"
+        />
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/menu"
-        android:layout_width="300dp"
+        android:layout_width="252dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="350dp"
         android:layout_gravity="center_horizontal"
         style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu">
 
@@ -47,10 +96,78 @@
             android:id="@+id/auto_complete_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/drop_down"
+            android:hint="@string/drop_down1"
             android:inputType="none"
             app:simpleItems="@array/dropdown_menu" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/menu1"
+        android:layout_width="252dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="420dp"
+        android:layout_gravity="center_horizontal"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu">
+
+        <AutoCompleteTextView
+            android:id="@+id/auto_complete_text_view1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/drop_down2"
+            android:inputType="none"
+            app:simpleItems="@array/dropdown_menu2" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/menu2"
+        android:layout_width="252dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="490dp"
+        android:layout_gravity="center_horizontal"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu">
+
+        <AutoCompleteTextView
+            android:id="@+id/auto_complete_text_view2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/drop_down3"
+            android:inputType="none"
+            app:simpleItems="@array/dropdown_menu3" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/head"
+        android:layout_width="252dp"
+        android:layout_height="33dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:ems="11"
+        android:text="Poverty Predictor"
+        android:textColor="#F44336"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/predictor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="430dp"
+        android:layout_gravity="center"
+        android:text="Predict" />
+
+    <TextView
+        android:id="@+id/display"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="600dp"
+        android:background="#E5DFE8"
+        android:ems="10"
+        android:textAlignment="center"
+        android:textColor="#FDF6FE"
+        android:textSize="30sp" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
