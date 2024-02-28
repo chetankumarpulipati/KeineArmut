@@ -9,5 +9,7 @@
 </ul>
 <hr>
 To access our app you can <a href="https://drive.google.com/file/d/1oQhS0Dg3oNcsKwv5ugh-bmaslElBACVI/view?usp=sharing">Click Here</a> to Download the Apk File 
+
+<p> Check out the the Dash Board </p>
 <img src="https://github.com/chetankumarpulipati/KeineArmut/blob/main/Screenshot%202024-02-28%20095826.jpg">
 
