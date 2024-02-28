@@ -86,7 +86,7 @@ class employmentCard: AppCompatActivity() {
 
         }
         predict.setOnClickListener{
-            val url = "https://test-ajrtk4rmwa-ue.a.run.app/predict"
+            val url = "https://test2-ajrtk4rmwa-ue.a.run.app/predict"
             val workclass = field_selection.text.toString()
             val education = field_selection1.text.toString()
             val maritalstatus = field_selection2.text.toString()
